@@ -85,9 +85,15 @@
 
             <li>
                 <a class="fa fa-folder-open-o" data-toggle="collapse"  href="#collapseExample7"  role="button" aria-expanded="false" aria-controls="collapseExample">
-                     Procesos
+                     Casos y Procesos   
                 </a>            
                 <ul class="list-unstyled collapse" id="collapseExample7">
+                    <li>
+                        <a class="dropdown-item" data-feather="shopping-cart" href="{{ route('nuevo_caso')}}">
+                        Nuevo caso  
+                        <i class="fa fa-clipboard"></i> 
+                        </a>
+                    </li>
                     <li>
                         <a class="dropdown-item" data-feather="shopping-cart" href="{{ route('nuevo_proceso')}}">
                         Nuevo proceso  
@@ -122,7 +128,7 @@
                     </li>
                     <li>
                         <a class="dropdown-item" data-feather="shopping-cart" href="{{ route('nuevo_contra_parte') }}">
-                        Nuevo contra parte  
+                        Nueva persona  
                         <i class="fa fa-user-plus"></i> 
                         </a>
                     </li>                

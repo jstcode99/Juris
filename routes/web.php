@@ -87,6 +87,9 @@ Route::group( ['prefix' => 'Administrador', 'middleware' => 'auth'], function ()
         Route::get('Cobros/Mostrar-Cobro','CobrosController@mostrar_cobro')->name('mostrar_cobro');
 
 
+        //Casos        
+        Route::get('Casos/Nuevo-Caso','CasosController@crear')->name('nuevo_caso');
+        Route::post('Casos/Guardar-Caso','CasosController@guardar')->name('guardar_caso');
 
         //Procesos        
         Route::get('Procesos/Nuevo-Proceso','ProcesosController@crear')->name('nuevo_proceso');

@@ -2,7 +2,7 @@
     @section('contenedor')
     <div class="card">
         <div class="card-header">
-            <h3>Registrar una nueva contra parte</h3>
+            <h3>Registrar nueva persona</h3>
         </div> 
         <div class="card-body">            
             {!! Form::open(array('route' => 'guardar_ontra_parte')) !!}

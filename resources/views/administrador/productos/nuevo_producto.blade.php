@@ -1,4 +1,8 @@
 @extends('home')
+@section('breadcrumb-items')
+        <li class="breadcrumb-item"><a href="{{ route('home')}}">Home</a></li>
+        <li class="breadcrumb-item"><a href="{{ route('nuevo_producto')}}">Nuevo producto</a></li>                      
+    @endsection 
     @section('contenedor')
      <div class="row">
         <div class="col-8">
