@@ -1,0 +1,42 @@
+php artisan make:migration create_personas_table;
+php artisan make:migration create_personasprocesos_table;
+php artisan make:migration create_procesos_table;
+php artisan make:migration create_casuistica_table;
+php artisan make:migration create_documentoscasuistica_table;
+php artisan make:migration create_instancias_table;
+php artisan make:migration create_salarios_table;
+php artisan make:migration create_abonos_table;
+php artisan make:migration create_productos_table;
+php artisan make:migration create_especialidades_table;
+php artisan make:migration create_cobros_table;
+
+
+php artisan make:migration create_alegatos_conclusiones_table
+php artisan make:migration create_pretenciones_table
+php artisan make:migration create_notificaciones_table
+php artisan make:migration create_anexos_table
+php artisan make:migration create_hechos_table
+php artisan make:migration create_pruebas_table
+php artisan make:migration create_excepciones_table
+php artisan make:migration create_despachos_table
+php artisan make:migration create_despachos_recorridos_table
+
+php artisan make:model Alegatos_conclusiones
+php artisan make:model Pretenciones
+php artisan make:model Notificaciones
+php artisan make:model Anexos
+php artisan make:model Hechos
+php artisan make:model Pruebas
+php artisan make:model Excepciones
+php artisan make:model Despachos
+php artisan make:model Despachos_recorridos
+
+php artisan make:controller Alegatos_conclusionesController
+php artisan make:controller PretencionesController
+php artisan make:controller NotificacionesController
+php artisan make:controller AnexosController
+php artisan make:controller HechosController
+php artisan make:controller PruebasController
+php artisan make:controller ExcepcionesController
+php artisan make:controller DespachosController
+php artisan make:controller Despachos_recorridosController
