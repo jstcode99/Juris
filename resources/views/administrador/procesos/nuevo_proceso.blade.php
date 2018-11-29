@@ -6,7 +6,7 @@
     @section('contenedor')
     {!! Form::open(array('route' => 'guardar_proceso')) !!}  
     <div class="row">            
-        <div class="col-md-8">                
+        <div class="col-md-12">                
             <div class="card">
                 <div class="card-header">
                         <h3>Registrar una nuevo proceso</h3>     
@@ -63,17 +63,24 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-4">             
+        <div role="presentation" class="divider">
+            <br>
+        </div>
+        <div class="col-md-12">             
             <div class="card">
                 <div class="card-header">                      
-                        <h4>Datos para clasificación</h4>                           
+                        <h4>Clasificación de riesgos</h4>                           
                 </div>
                 <div class="card-body">
                     <div class="form-row">                             
                         <div class="col-md-6 mb-3">    
-                            {!! Form::label('riesgo', 'Riesgo') !!}    
-                            
-                            {!! Form::select('riesgo', $riesgo, null, ['class' => 'form-control']) !!}         
+                            {!! Form::label('riesgo1', '¿El proceso requiere exposicion a agentes quimicos, meterial contamindado,') !!}    
+                            <div class="col-md-3 mb-3">
+                            {!! Form::select('riesgo1', array(
+                                'si' => 'si',
+                                'no' => 'no',
+                            ), null, ['class' => 'form-control']) !!}       
+                            </div>  
                         </div>
 
                         <div class="col-md-6 mb-3">    

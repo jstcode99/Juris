@@ -4,14 +4,8 @@
         <li class="breadcrumb-item"><a href="{{ route('nuevo_caso')}}">Nuevo caso</a></li>
     @endsection  
     @section('contenedor')
-    {!! Form::open(array('route' => 'guardar_caso')) !!}  
-    <div class="card">
-        <div class="card-header">
-            <h3>Registrar un nuevo caso</h3>
-        </div>
-        <div class="card-body">                                     
+    {!! Form::open(array('route' => 'guardar_caso')) !!}                               
                 @include('administrador.casos.formulario.caso')                      
-        </div>
     </div>
     {{ Form::close() }}       
 

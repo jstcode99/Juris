@@ -20,23 +20,7 @@
             @include('layouts.errores')
         </div>
         <div class="col-12 mb-6">
-            @yield('contenedor')
-            <nav class="navbar fixed-bottom navbar-light">
-                <ul class="nav justify-content-end">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="/">Inicio</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Link</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Link</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link disabled" href="#">Disabled</a>
-                    </li>
-                </ul>
-            </nav>
+            @yield('contenedor')            
         </div>        
                
     </div>  
