@@ -1,4 +1,8 @@
 @extends('home')
+    @section('breadcrumb-items')
+        <li class="breadcrumb-item"><a href="{{ route('home')}}">Home</a></li>
+        <li class="breadcrumb-item"><a href="{{ route('nuevo_proceso')}}">Nuevo proceso</a></li>
+    @endsection  
     @section('contenedor')
     {!! Form::open(array('route' => 'guardar_proceso')) !!}  
     <div class="row">            

@@ -1,4 +1,10 @@
 @extends('home')
+    @section('breadcrumb-items')
+        <li class="breadcrumb-item"><a href="{{ route('home')}}">Home</a></li>
+        
+        <li class="breadcrumb-item"><a href="{{ route('listado_clientes')}}">Listado de clientes</a></li>
+        <li class="breadcrumb-item"><a href="{{ route('mostrar_cliente', ['documento' => $cliente->id]) }}">Actualizar cliente</a></li>
+    @endsection 
     @section('contenedor')                   
         {!! Form::model($cliente, ['route' => ['actualizar_cliente',$cliente->id],'method' => 'put']) !!}
             <div class="row">   

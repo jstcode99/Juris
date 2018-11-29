@@ -91,7 +91,7 @@
                     <li>
                         <a class="dropdown-item" data-feather="shopping-cart" href="{{ route('nuevo_proceso')}}">
                         Nuevo proceso  
-                        <i class="fa fa-folder-plus"></i> 
+                        <i class="fa fa-folder"></i> 
                         </a>
                     </li>
                     <li>
@@ -121,36 +121,22 @@
                         </a>
                     </li>
                     <li>
-                        <a class="fa fa-black-tie" data-toggle="collapse" href="#collapseExample6" role="button" aria-expanded="false" aria-controls="collapseExample6">
-                            Contra Parte
+                        <a class="dropdown-item" data-feather="shopping-cart" href="{{ route('nuevo_contra_parte') }}">
+                        Nuevo contra parte  
+                        <i class="fa fa-user-plus"></i> 
                         </a>
-                        <ul class="list-unstyled collapse" id="collapseExample6">
-                            <li>
-                                <a class="dropdown-item" data-feather="shopping-cart" href="{{ route('nuevo_contra_parte') }}">
-                                Nuevo contra parte  
-                                <i class="fa fa-user-plus"></i> 
-                                </a>
-                            </li>
-                        </ul>
+                    </li>                
+                    <li>
+                        <a class="dropdown-item" data-feather="shopping-cart" href="{{ route('nuevo_abogado') }}">
+                            Nuevo abogado 
+                            <i class="fa fa-address-card-o"></i>
+                        </a>
                     </li>
                     <li>
-                        <a class="fa fa-mortar-board"  data-toggle="collapse" href="#collapseExample2" role="button" aria-expanded="false" aria-controls="collapseExample">
-                            Abogados
+                        <a class="dropdown-item" data-feather="shopping-cart" href="{{ route('listado_abogados') }}">
+                            Listado de Abogados
+                            <i class="fa fa-list-ol"></i>
                         </a>
-                        <ul class="list-unstyled collapse" id="collapseExample2">
-                            <li>
-                                <a class="dropdown-item" data-feather="shopping-cart" href="{{ route('nuevo_abogado') }}">
-                                    Nuevo abogado 
-                                    <i class="fa fa-address-card-o"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item" data-feather="shopping-cart" href="{{ route('listado_abogados') }}">
-                                    Listado de Abogados
-                                    <i class="fa fa-list-ol"></i>
-                                </a>
-                            </li>
-                        </ul>
                     </li>
                 </ul>
             </li>            
@@ -179,44 +165,30 @@
                         </a>                        
                     </li>
                     <li>
-                        <a class="fa fa-clipboard"  data-toggle="collapse" href="#collapseExample4" role="button" aria-expanded="false" aria-controls="collapseExample">
-                            Plantillas y Documentos
-                        </a>
-                        <ul class="list-unstyled collapse" id="collapseExample4">
-                            <li>
-                                <a class="dropdown-item" href="{{ route('nueva_plantilla') }}">
-                                    Nueva plantilla                        
-                                    <i class="fa fa-file-o plus"></i>
-                                </a>                        
-                            </li>                    
-                            <li>
-                                <a class="dropdown-item" href="{{ route('listado_plantillas') }}">
-                                    Listado de plantillas                        
-                                    <i class="fa fa-list"></i>
-                                </a>                        
-                            </li>
-                        </ul>
-            </li>   
-                <li>
-                        <a class="fa fa-cubes" data-toggle="collapse" href="#collapseExample5" role="button" aria-expanded="false" aria-controls="collapseExample">
-                            Productos
-                        </a>
-                        <ul class="list-unstyled collapse" id="collapseExample5">
-                            <li>
-                                <a class="dropdown-item" href="{{ route('nuevo_producto') }}">
-                                    Nuevo producto                        
-                                    <i class="fa fa-cube"></i>
-                                </a>                        
-                            </li>                    
-                            <li>
-                                <a class="dropdown-item" href="{{ route('listado_productos') }}">
-                                    Listado de productos                      
-                                    <i class="fa fa-list"></i>
-                                </a>                        
-                            </li>
-                        </ul>
+                        <a class="dropdown-item" href="{{ route('nueva_plantilla') }}">
+                            Nueva plantilla                        
+                            <i class="fa fa-file-o plus"></i>
+                        </a>                        
+                    </li>                    
+                    <li>
+                        <a class="dropdown-item" href="{{ route('listado_plantillas') }}">
+                            Listado de plantillas                        
+                            <i class="fa fa-list"></i>
+                        </a>                        
                     </li>
-                </ul>
+                     <li>
+                        <a class="dropdown-item" href="{{ route('nuevo_producto') }}">
+                            Nuevo producto                        
+                            <i class="fa fa-cube"></i>
+                        </a>                        
+                    </li>                    
+                    <li>
+                        <a class="dropdown-item" href="{{ route('listado_productos') }}">
+                            Listado de productos                      
+                            <i class="fa fa-list"></i>
+                        </a>                        
+                    </li>                           
+                <li>            
             </li>            
         </ul>
     </div>
