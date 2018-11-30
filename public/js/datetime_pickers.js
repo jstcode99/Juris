@@ -47,74 +47,66 @@
         }              
         }); 
   });
-  $('#producto').change(function(){  
-        $('#proceso1').hide();
-        $('#proceso2').hide();
-        $('#proceso3').hide();
-        $('#proceso4').hide();
-      url = "http://localhost:8000/Administrador/Productos/Productos-Cobro";
-       _token = $("input[name='_token']").val();
-       id = $('#producto').val();
 
-       var parametros = {
-        "id": id,
-        "_token" : _token
-        };
+$('#producto').change(function(){  
+    $('#proceso2').hide();
+    url = "http://localhost:8000/Administrador/Productos/Productos-Cobro";
+    _token = $("input[name='_token']").val();
+    id = $('#producto').val();
+    var parametros = {
+      "id": id,
+      "_token" : _token
+      };
+   $.ajax({
+    data:  parametros,
+    url:   url,
+    type:  'post',
+    beforeSend: function () {                
+    },
+    success:  function(response) {          
+        if(response != null)
+        {         
+          console.log(response.tipo_tarifa);
+          switch(response.tipo_tarifa){                
+            case 'CUOTA FIJA SALARIAL':                
+              // Procesos1                
+            break;
 
-      $.ajax({
-        data:  parametros,
-        url:   url,
-        type:  'post',
-        beforeSend: function () {                
-        },
-        success:  function(response) {          
-            if(response != null)
-            {                            
-              switch(response.tipo_tarifa){                
-                case 'CUOTA FIJA SALARIAL':                
-                  // Procesos1                
-                  $('#proceso1').show();
-                break;
+            case 'CUOTA FIJA PORCENTUAL':
+                // Procesos2
+                $('#proceso2').show();
+            break;
 
-                case 'CUOTA FIJA PORCENTUAL':
-                    // Procesos2
-                    $('#proceso2').show();
-                break;
+            case 'CUOTA LITIS SALARIAL':
+                // Procesos1
 
-                case 'CUOTA LITIS SALARIAL':
-                    // Procesos1
-                    $('#proceso1').show();
-                break;
-                
-                case 'CUOTA LITIS PORCENTUAL':
-                    // Procesos2
-                    $('#proceso2').show();
-                break;
+            break;
+            
+            case 'CUOTA LITIS PORCENTUAL':
+                // Procesos2
+                $('#proceso2').show();
+            break;
 
-                case 'CUOTA MIXTA SALARIAL MAS PORCENTUAL':
-                    // Procesos3
-                    $('#proceso1').show();
-                    $('#proceso2').show();
-                    $('#proceso3').show();
-                break;
-                
-                case 'CUOTA MIXTA SALARIAL POR RANGO':                
-                    $('#proceso1').show();
-                    $('#proceso5').show();
-                    $('#proceso4').show();                
-                break;
+            case 'CUOTA MIXTA SALARIAL MAS PORCENTUAL':
+                // Procesos3
+                $('#proceso2').show();
+            break;
+            
+            case 'CUOTA MIXTA SALARIAL POR RANGO':    
+                // Procesos4
+                $('#proceso2').show();
+            break;
 
-                case 'CUOTA MINIMA SALARIAL':
-                    // Procesos1
-                    $('#proceso1').show();
-                break;
+            case 'CUOTA MINIMA SALARIAL':
+                // Procesos1
 
-                case 'CUOTA PLENA SALARIAL':
-                    // Procesos1
-                    $('#proceso1').show();
-                break;                           
-              }                        
-            }
-        }              
-        }); 
-  });
+            break;
+
+            case 'CUOTA PLENA SALARIAL':
+                // Procesos1
+            break;                           
+          }                        
+        }
+    }              
+    }); 
+});

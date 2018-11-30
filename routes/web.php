@@ -81,10 +81,8 @@ Route::group( ['prefix' => 'Administrador', 'middleware' => 'auth'], function ()
         Route::get('/Productos/Mostrar-Producto/{id}','ProductosController@mostrar_producto')->name('mostrar_producto');
         Route::put('/Productos/Actualizar-Producto/{id}','ProductosController@actualizar_producto')->name('actualizar_producto');    
 
-        Route::post('/Productos/Productos-Especialidad','ProductosController@productos_especialidad')->name('productos_especialidad');
-
-        Route::post('/Productos/Productos-Cobro','ProductosController@productos_cobros')->name('productos_cobros');
-
+        Route::post('/Productos/Productos-Especialidad','ProductosController@productos_especialidad')->name('productos_especialidad');        
+        Route::post('/Productos/Productos-Cobro','ProductosController@productos_cobros')->name('productos_cobros'); 
         //Cobros 
         Route::post('Cobros/Guardar-Cobro','CobrosController@guardar')->name('guardar');
         Route::post('Cobros/Mostrar-Cobro','CobrosController@productos_especialidad')->name('productos_especialidad');

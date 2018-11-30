@@ -6,7 +6,7 @@
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-    <h4 class="navbar-brand" href="{{ route('home')}}">ACProyect</h4>
+    <h4 class="navbar-brand" href="{{ route('home')}}">Juris</h4>
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
       <li class="nav-item active">
         <a class="nav-link" href="{{ route('home')}}">Home <span class="sr-only">(current)</span></a>

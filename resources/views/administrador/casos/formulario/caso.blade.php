@@ -73,16 +73,15 @@
                         
                         {!! Form::select('estrato', $estrato, null, ['class' => 'form-control']) !!}         
                     </div> 
-                    <div class="col-md-12 mb-3" style="display: none" id="proceso1">                    
-                        @include('administrador.cobros.formulario.por_smlmv')                       
+                    <div class="col-md-12 mb-3">
+                        <div class="col-md-6 mb-3" style="display: none" id="proceso2">                                                
+                                {!! Form::label('valor_proceso', 'Valor del proceso o negocio') !!}                            
+                                {!! Form::number('valor_proceso', null, ['class' => 'form-control']) !!}
+                                <small id="passwordHelpBlock" class="form-text text-muted">
+                                    Ingrese el valor del negocio, ejemplo succión por un valor ($50.000.000 millones) = valor del negocio  
+                                </small>                                                                              
+                        </div>
                     </div>
-
-                    <div class="col-md-12 mb-3" style="display: none" id="proceso2">                    
-                        @include('administrador.cobros.formulario.por_porcentaje')                        
-                    </div>
-                    <div class="col-md-12 mb-3" style="display: none" id="proceso4">                    
-                            @include('administrador.cobros.formulario.por_porcentaje_smlmv_rango')                        
-                    </div> 
                     <div class="col-md-6 mb-3">    
                         <button class="btn btn-primary btn-block">Cotizar <i class=""></i></button>
                     </div>      

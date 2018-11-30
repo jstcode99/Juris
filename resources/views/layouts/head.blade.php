@@ -1,9 +1,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="ACProyect">
-  <meta name="author" content="ACProyect">  
-  <title>{{ config('app.name', 'ACProyect') }}</title>
+  <meta name="description" content="Juris">
+  <meta name="author" content="Juris">  
+  <title>{{ config('app.name', 'Juris') }}</title>
   <link href="{{ asset('vendor/bootstrap/css/bootstrap.css') }}" rel="stylesheet">
   <link type="text/css" href="{{asset('css/bootadmin.min.css')}}?v=1.0.0" rel="stylesheet">  
   <link type="text/css" href="{{asset('css/jquery-ui.css')}}" rel="stylesheet">  

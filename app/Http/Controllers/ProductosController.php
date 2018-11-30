@@ -94,8 +94,7 @@ class ProductosController extends Controller
         }else {
             return null;
         }
-    }
-
+    }  
     public function productos_cobros(Request $request)
     {    
         if(isset($request->id) || $request->id != null)
@@ -109,5 +108,6 @@ class ProductosController extends Controller
             return null;
         }
     }
-    
+     
 }
+

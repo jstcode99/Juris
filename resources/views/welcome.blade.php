@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>{{ config('app.name', 'ACProyect') }}</title>    
+    <title>{{ config('app.name', 'Juris') }}</title>    
 
     <!-- Bootstrap core CSS -->    
     <link href="{{ asset('vendor/bootstrap/css/bootstrap.css') }}" rel="stylesheet">

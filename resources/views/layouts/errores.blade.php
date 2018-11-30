@@ -62,3 +62,14 @@
                     });
     </script>
 @endif
+@if(session()->has('super_success'))
+    <script type="text/javascript">
+                $.confirm({
+                        icon: 'fa fa-smile-o',
+                        theme: 'supervan',
+                        closeIcon: true,
+                        title: 'bien!',
+                        content: '{{ session()->get('super_success') }}',
+                    });
+    </script>
+@endif

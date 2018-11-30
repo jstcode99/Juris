@@ -5,8 +5,11 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use DB;
 use App\Casos;
+
 class CasosController extends Controller
 {
+    
+
     private  $procesos,$productos,$instancias,$abogados,$clientes,$contraparte,
         $demandantes,$riesgo,$lugar,$dificultad,$estrato,$tiempo,$clasificacion,$cuantias,$especialidades;
 
@@ -49,6 +52,10 @@ class CasosController extends Controller
                 "mayor" => "Mayor cuantia",
             );
         }
+    public function Reporte_casos()
+    {
+        
+    }
 
     public function crear()
     {
@@ -76,30 +83,93 @@ class CasosController extends Controller
         $datos = $request->validate([
             'descripcion' => 'required|string|max:750', 
         ]);
-
-
+        
+        $producto = DB::table('productos')
+            ->where('productos.id' ,'=', $request->producto)
+            ->join('cobros','cobros.id','=','productos.id_cobro')
+            ->select('productos.*','cobros.*')->get();
+        $smlmv = DB::table('salarios')->orderby('created_at','DESC')->get();
+        $id_caso = DB::table('casos')->orderby('created_at','DESC')->pluck('id');
+        //return $producto;
+        
+        switch($producto[0]->tipo_tarifa){                
+            case 'CUOTA FIJA SALARIAL':
+                // Procesos1                 
+                $caso->valor_caso = self::Proceso1($producto[0]->n_smlmv,$smlmv[0]->valor);
+            break;
+            case 'CUOTA FIJA PORCENTUAL':
+                // Procesos2          
+                $datos = $request->validate([
+                    'valor_proceso' => 'required|numeric', 
+                ]);      
+            break;
+            case 'CUOTA LITIS SALARIAL':
+                 // Procesos1                 
+                $caso->valor_caso = self::Proceso1($producto[0]->n_smlmv,$smlmv[0]->valor);                
+            break;            
+            case 'CUOTA LITIS PORCENTUAL':
+                // Procesos2    
+                $datos = $request->validate([
+                    'valor_proceso' => 'required|numeric', 
+                ]);            
+            break;
+            case 'CUOTA MIXTA SALARIAL MAS PORCENTUAL':
+                // Procesos3   
+                $datos = $request->validate([
+                    'valor_proceso' => 'required|numeric', 
+                ]);                                         
+            break;            
+            case 'CUOTA MIXTA SALARIAL POR RANGO':   
+                // Procesos4
+                $datos = $request->validate([
+                    'valor_proceso' => 'required|numeric', 
+                ]);                                                   
+            break;
+            case 'CUOTA MINIMA SALARIAL':
+                 // Procesos1                 
+                $caso->valor_caso = self::Proceso1($producto[0]->n_smlmv,$smlmv[0]->valor);                
+            break;
+            case 'CUOTA PLENA SALARIAL':
+                 // Procesos1                 
+                $caso->valor_caso = self::Proceso1($producto[0]->n_smlmv,$smlmv[0]->valor);                
+            break; 
+        }
+        
+        
         if($request->etapas=='on')
         {
-
-            $datos = $request->validate([
-                'producto' => 'required|numeric', 
+            $datos = $request->validate([                
                 'id_instancia' => 'required|numeric', 
                 'estrato' => 'required|numeric', 
                 'cuantia' => 'required|string|max:100', 
                 'clase' => 'required|string|max:100', 
             ]);
-
             $caso->etapa = 'Pre-contractual';
+            $caso->estado = 'ACTIVO';
+            $caso->descripcion1 = $request->descripcion;
+            $caso->cuantia = $request->cuantia;
+            $caso->clase = $request->clase;
+            $caso->estrato = $request->estrato;
+            $caso->id_producto = $request->producto;
+            $caso->id_instancia = $request->id_instancia;
+            $caso->id_persona = $request->cliente;
+
+            $caso->save();
+            if($caso){
+                $caso = DB::table('casos')->orderby('created_at','DESC')->get();
+                return back()->with('super_success', 'El caso ha sido registrado con exito, Codigo de caso es: '.$caso[0]->id);
+            }
         }else {
             $caso->etapa = 'Contractual';
-        }
-        
+        }                                                
+    }
+    public function Proceso1($n_smlmv, $smlmv)
+    {
+        return $n_smlmv * $smlmv;
+    }
 
-        $caso->save();
-
-        if($caso){
-            return back()->with('success', 'El caso ha sido registrado con exito!');
-        }
-
+    public function Proceso2($porcentaje1, $smlmv)
+    {
+        return $n_smlmv * $smlmv;
     }
 }
