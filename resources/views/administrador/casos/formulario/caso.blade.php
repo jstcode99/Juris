@@ -1,4 +1,5 @@
-<div class="row">            
+<div class="row">                
+    {!! Form::open(array('route' => 'guardar_caso')) !!}    
     <div class="col-md-4"> 
         <div class="card"> 
             <div class="card-body"> 
@@ -8,8 +9,8 @@
                          <hr>
                     </div> 
                     <div class="col-md-12 mb-3"> 
-                        {!! Form::label('Etapas', 'Etapas') !!}    
-                        <input id="etapas" type="checkbox" checked data-toggle="toggle"
+                        {!! Form::label('etapas', 'Etapas') !!}    
+                        <input name="etapas" id="etapas" type="checkbox" checked data-toggle="toggle"
                         data-on="Pre-contractual" data-off="Contractual" data-onstyle="success" data-offstyle="info">                                     
                         <small id="passwordHelpBlock" class="form-text text-muted">
                             Seleccione la etapa en la cual esta el caso. 
@@ -63,28 +64,31 @@
                         {!! Form::select('clase', $clasificacion, null, ['class' => 'form-control']) !!}         
                     </div>   
                     <div class="col-md-4 mb-3">    
-                        {!! Form::label('instancia', 'Instancias') !!}    
+                        {!! Form::label('id_instancia', 'Instancias') !!}    
                         
-                        {!! Form::select('instancia', $instancias, null, ['class' => 'form-control']) !!}         
+                        {!! Form::select('id_instancia', $instancias, null, ['class' => 'form-control']) !!}         
                     </div>
                     <div class="col-md-4 mb-3">    
                         {!! Form::label('estrato', 'Estrato') !!}    
                         
                         {!! Form::select('estrato', $estrato, null, ['class' => 'form-control']) !!}         
                     </div> 
-                    <div style="display: none" id="proceso1">                    
+                    <div class="col-md-12 mb-3" style="display: none" id="proceso1">                    
                         @include('administrador.cobros.formulario.por_smlmv')                       
                     </div>
 
-                    <div style="display: none" id="proceso2">                    
+                    <div class="col-md-12 mb-3" style="display: none" id="proceso2">                    
                         @include('administrador.cobros.formulario.por_porcentaje')                        
                     </div>
-                    <div style="display: none" id="proceso4">                    
+                    <div class="col-md-12 mb-3" style="display: none" id="proceso4">                    
                             @include('administrador.cobros.formulario.por_porcentaje_smlmv_rango')                        
                     </div> 
-                     <div class="col-md-12 mb-3">    
-                        <button class="btn btn-primary">Cotizar <i class=""></i></button>
-                    </div>                    
+                    <div class="col-md-6 mb-3">    
+                        <button class="btn btn-primary btn-block">Cotizar <i class=""></i></button>
+                    </div>      
+                    <div class="col-md-6 mb-3">                            
+                        {!! Form::submit('Guardar', ['class' => 'btn btn-success btn-block']) !!}                        
+                    </div>               
                 </div> 
             </div> 
         </div>
@@ -96,9 +100,41 @@
                     <div class="col-md-12 mb-3">
                         <h5 class="text-info">Pre-contractual</h5> 
                         <hr>                        
+                    </div> 
+                    <div class="col-md-6 mb-3">                            
+                        {!! Form::submit('Guardar', ['class' => 'btn btn-success btn-block']) !!}                        
                     </div>                                             
                 </div>
             </div>
         </div>
+    </div>    
+    {!! Form::close() !!}    
+</div>
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+  Launch demo modal
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secundary" data-dismiss="modal" aria-label="Close">
+          Cerrar
+        </button>
+        <button type="button" class="btn btn-primary"><i class="fa fa-print"></i>Imprimir</button>
+      </div>
     </div>
+  </div>
 </div>

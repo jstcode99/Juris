@@ -48,6 +48,10 @@
         }); 
   });
   $('#producto').change(function(){  
+        $('#proceso1').hide();
+        $('#proceso2').hide();
+        $('#proceso3').hide();
+        $('#proceso4').hide();
       url = "http://localhost:8000/Administrador/Productos/Productos-Cobro";
        _token = $("input[name='_token']").val();
        id = $('#producto').val();

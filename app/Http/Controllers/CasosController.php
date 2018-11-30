@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use DB;
+use App\Casos;
 class CasosController extends Controller
 {
     private  $procesos,$productos,$instancias,$abogados,$clientes,$contraparte,
@@ -67,6 +68,38 @@ class CasosController extends Controller
     }
     public function guardar(Request $request)
     {
+        $caso = new Casos;
+        if($request->cliente == '' || $request->cliente == null || $request->cliente == 0)
+        {
+            return back()->with('warning', 'Debe selecionar un cliente');
+        }
+        $datos = $request->validate([
+            'descripcion' => 'required|string|max:750', 
+        ]);
+
+
+        if($request->etapas=='on')
+        {
+
+            $datos = $request->validate([
+                'producto' => 'required|numeric', 
+                'id_instancia' => 'required|numeric', 
+                'estrato' => 'required|numeric', 
+                'cuantia' => 'required|string|max:100', 
+                'clase' => 'required|string|max:100', 
+            ]);
+
+            $caso->etapa = 'Pre-contractual';
+        }else {
+            $caso->etapa = 'Contractual';
+        }
+        
+
+        $caso->save();
+
+        if($caso){
+            return back()->with('success', 'El caso ha sido registrado con exito!');
+        }
 
     }
 }
