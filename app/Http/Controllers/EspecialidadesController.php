@@ -66,4 +66,6 @@ class EspecialidadesController extends Controller
             return redirect('Administrador/Especialidades/Especialidades-Registradas')->with('success', 'La Especialidad ha sido actualizada con exito!');
         }      
     }
+
+    
 }

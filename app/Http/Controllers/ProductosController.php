@@ -82,7 +82,32 @@ class ProductosController extends Controller
             return back()->with('success', 'El producto ha sido actualizado con exito!');
         } 
     }
+    public function productos_especialidad(Request $request)
+    {    
+        if(isset($request->id) || $request->id != null)
+        {
+            $datos = $request->validate([           
+                'id' => 'required|numeric',
+            ]);
+            $productos = DB::table('productos')->where('id_especialidad','=',$request->id)->get();
+            return $productos;
+        }else {
+            return null;
+        }
+    }
 
-   
+    public function productos_cobros(Request $request)
+    {    
+        if(isset($request->id) || $request->id != null)
+        {
+            $datos = $request->validate([           
+                'id' => 'required|numeric',
+            ]);
+            $producto = Productos::find($request->id);
+            return $producto;
+        }else {
+            return null;
+        }
+    }
     
 }

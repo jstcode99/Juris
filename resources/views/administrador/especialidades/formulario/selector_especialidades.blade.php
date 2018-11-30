@@ -1,3 +1,3 @@
 
-{!! Form::label('especialidad', 'Seleccione una especialidad') !!}  
-{!! Form::select('especialidad', $especialidades, null, ['class'=>'form-control']) !!}
+{!! Form::label('especialidad', 'Especialidades') !!}  
+{!! Form::select('especialidad', $especialidades, 0, ['class'=>'form-control', 'id' => 'especialidad']) !!}

@@ -7,11 +7,12 @@ use DB;
 class CasosController extends Controller
 {
     private  $procesos,$productos,$instancias,$abogados,$clientes,$contraparte,
-        $demandantes,$riesgo,$lugar,$dificultad,$estrato,$tiempo,$clasificacion,$cuantias;
+        $demandantes,$riesgo,$lugar,$dificultad,$estrato,$tiempo,$clasificacion,$cuantias,$especialidades;
 
     public function __construct()
         {
             $this->middleware('auth');
+            $this->especialidades = DB::table('especialidades')->pluck('nombre', 'id');
             $this->clientes = DB::table('personas')->where('name','=','CLIENTE')->pluck('documento', 'id');        
             $this->contraparte = DB::table('personas')->where('name','=','CONTRAPARTE')->pluck('documento', 'id');
             $this->instancias = DB::table('instancias')->pluck('nombre', 'id');
@@ -51,6 +52,7 @@ class CasosController extends Controller
     public function crear()
     {
         $clientes = array_add($this->clientes, 0,"No selecionar una cliente");
+        $especialidades = array_add($this->especialidades,0,"No selecione una especialidad");
         return view('administrador.casos.nuevo_caso',[
             'clientes'=> $this->clientes,
             'estrato'=> $this->estrato,
@@ -60,6 +62,7 @@ class CasosController extends Controller
             'clasificacion' => $this->clasificacion,
             'cuantias' => $this->cuantias,
             'productos'=> $this->productos,
+            'especialidades'=> $this->especialidades,
             ]);  
     }
     public function guardar(Request $request)
