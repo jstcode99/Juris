@@ -91,6 +91,12 @@ Route::group( ['prefix' => 'Administrador', 'middleware' => 'auth'], function ()
         //Casos        
         Route::get('Casos/Nuevo-Caso','CasosController@crear')->name('nuevo_caso');
         Route::post('Casos/Guardar-Caso','CasosController@guardar')->name('guardar_caso');
+        Route::get('/Casos/Casos-Registrados','CasosController@mostrar')->name('listado_casos');  
+        Route::get('/Casos/Mostrar-Caso/{id}','CasosController@mostrar_caso')->name('mostrar_caso');
+        Route::put('/Casos/Actualizar-caso/{id}','CasosController@actualizar_caso')->name('actualizar_caso');    
+        Route::get('/Casos/Ver-caso/{id}','CasosController@ver_caso')->name('ver_caso');
+
+
 
         //Procesos        
         Route::get('Procesos/Nuevo-Proceso','ProcesosController@crear')->name('nuevo_proceso');
@@ -107,6 +113,11 @@ Route::group( ['prefix' => 'Administrador', 'middleware' => 'auth'], function ()
         Route::post('PersonasProcesos/Guardar-PersonasProcesos','PersonasProcesosController@guardar')->name('guardar_personasproceso');
         Route::get('PersonasProcesos/Crear-PersonasProcesos','PersonasProcesosController@crear')->name('crear_personasproceso');
               
+        //Categorias        
+        Route::get('Categorias/Nueva-Categoria', 'CategoriasController@crear')->name('nueva_categoria');
+        Route::post('Categorias/Guardar-Categoria', 'CategoriasController@guardar')->name('guardar_categoria');        
+        Route::put('Categorias/Actualizar-Categoria/{id}','CategoriasController@actualizar_categoria')->name('actualizar_categoria');
+        Route::get('Categorias/Mostrar-Categoria/{id}', 'CategoriasController@mostrar_categoria')->name('mostrar_categoria');
     }); 
 
 

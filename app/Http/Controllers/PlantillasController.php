@@ -74,7 +74,7 @@ class PlantillasController extends Controller
                 $datos = $request->validate([                
                     'documento' => 'required|mimes:pdf,docx,dot',
                 ]);          
-                $url = $request->file('documento')->store('public/platillas/');            
+                $url = $request->file('documento')->store('public/plantillas/');            
                 $plantilla->documento = $url;        
             }            
             $plantilla->titulo = $request->titulo;

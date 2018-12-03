@@ -11,11 +11,13 @@ class CasosController extends Controller
     
 
     private  $procesos,$productos,$instancias,$abogados,$clientes,$contraparte,
-        $demandantes,$riesgo,$lugar,$dificultad,$estrato,$tiempo,$clasificacion,$cuantias,$especialidades;
+        $demandantes,$riesgo,$lugar,$dificultad,$estrato,$tiempo,$clasificacion,
+        $cuantias,$especialidades,$categorias;
 
     public function __construct()
         {
             $this->middleware('auth');
+            $this->categorias = DB::table('categorias')->pluck('nombre', 'id');
             $this->especialidades = DB::table('especialidades')->pluck('nombre', 'id');
             $this->clientes = DB::table('personas')->where('name','=','CLIENTE')->pluck('documento', 'id');        
             $this->contraparte = DB::table('personas')->where('name','=','CONTRAPARTE')->pluck('documento', 'id');
@@ -59,18 +61,13 @@ class CasosController extends Controller
 
     public function crear()
     {
-        $clientes = array_add($this->clientes, 0,"No selecionar una cliente");
-        $especialidades = array_add($this->especialidades,0,"No selecione una especialidad");
+        $clientes = array_add($this->clientes, 0,"Selecionar una cliente");
+        $categorias = array_add($this->categorias,0,"Selecione una categoria");
         return view('administrador.casos.nuevo_caso',[
             'clientes'=> $this->clientes,
             'estrato'=> $this->estrato,
-            'tiempo'=> $this->tiempo,            
-            'instancias'=> $this->instancias,
-            'procesos' => $this->procesos,
-            'clasificacion' => $this->clasificacion,
             'cuantias' => $this->cuantias,
-            'productos'=> $this->productos,
-            'especialidades'=> $this->especialidades,
+            'categorias' => $this->categorias,
             ]);  
     }
     public function guardar(Request $request)
@@ -82,77 +79,23 @@ class CasosController extends Controller
         }
         $datos = $request->validate([
             'descripcion' => 'required|string|max:750', 
-        ]);
-        
-        $producto = DB::table('productos')
-            ->where('productos.id' ,'=', $request->producto)
-            ->join('cobros','cobros.id','=','productos.id_cobro')
-            ->select('productos.*','cobros.*')->get();
-        $smlmv = DB::table('salarios')->orderby('created_at','DESC')->get();
-        $id_caso = DB::table('casos')->orderby('created_at','DESC')->pluck('id');
-        //return $producto;
-        
-        switch($producto[0]->tipo_tarifa){                
-            case 'CUOTA FIJA SALARIAL':
-                // Procesos1                 
-                $caso->valor_caso = self::Proceso1($producto[0]->n_smlmv,$smlmv[0]->valor);
-            break;
-            case 'CUOTA FIJA PORCENTUAL':
-                // Procesos2          
-                $datos = $request->validate([
-                    'valor_proceso' => 'required|numeric', 
-                ]);      
-            break;
-            case 'CUOTA LITIS SALARIAL':
-                 // Procesos1                 
-                $caso->valor_caso = self::Proceso1($producto[0]->n_smlmv,$smlmv[0]->valor);                
-            break;            
-            case 'CUOTA LITIS PORCENTUAL':
-                // Procesos2    
-                $datos = $request->validate([
-                    'valor_proceso' => 'required|numeric', 
-                ]);            
-            break;
-            case 'CUOTA MIXTA SALARIAL MAS PORCENTUAL':
-                // Procesos3   
-                $datos = $request->validate([
-                    'valor_proceso' => 'required|numeric', 
-                ]);                                         
-            break;            
-            case 'CUOTA MIXTA SALARIAL POR RANGO':   
-                // Procesos4
-                $datos = $request->validate([
-                    'valor_proceso' => 'required|numeric', 
-                ]);                                                   
-            break;
-            case 'CUOTA MINIMA SALARIAL':
-                 // Procesos1                 
-                $caso->valor_caso = self::Proceso1($producto[0]->n_smlmv,$smlmv[0]->valor);                
-            break;
-            case 'CUOTA PLENA SALARIAL':
-                 // Procesos1                 
-                $caso->valor_caso = self::Proceso1($producto[0]->n_smlmv,$smlmv[0]->valor);                
-            break; 
-        }
-        
-        
+        ]);    
         if($request->etapas=='on')
         {
             $datos = $request->validate([                
-                'id_instancia' => 'required|numeric', 
+                'categoria' => 'required|numeric', 
                 'estrato' => 'required|numeric', 
                 'cuantia' => 'required|string|max:100', 
-                'clase' => 'required|string|max:100', 
+                'audio' => 'file|min:2required|mimes:mp3',
             ]);
             $caso->etapa = 'Pre-contractual';
             $caso->estado = 'ACTIVO';
-            $caso->descripcion1 = $request->descripcion;
+            $caso->descripcion1 = $request->descripcion;            
             $caso->cuantia = $request->cuantia;
-            $caso->clase = $request->clase;
-            $caso->estrato = $request->estrato;
-            $caso->id_producto = $request->producto;
-            $caso->id_instancia = $request->id_instancia;
             $caso->id_persona = $request->cliente;
+            $caso->id_categoria = $request->categoria;
+            $url_audio = $request->file('audio')->store('public/audios_casos/');
+            $caso->url_audio = $url_audio;
 
             $caso->save();
             if($caso){
@@ -163,6 +106,25 @@ class CasosController extends Controller
             $caso->etapa = 'Contractual';
         }                                                
     }
+
+    public function mostrar()
+    {
+        $casos = DB::table('casos')->get();
+        return view('administrador.casos.listado_casos', ['casos' => $casos]);        
+    }
+
+    public function mostrar_caso($id)
+    {         
+        $caso = casos::find($id);  
+        if(isset($caso))
+        {
+            return view('administrador.casos.mostrar_caso',['caso' => $caso]);              
+        }else{
+            return redirect('/Casos/Casos-Registrados')->with('warning', 'Debe seleccionar un caso de la lista de casos');
+        }      
+        
+    }
+
     public function Proceso1($n_smlmv, $smlmv)
     {
         return $n_smlmv * $smlmv;

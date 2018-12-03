@@ -67,9 +67,7 @@ class AbogadosController extends Controller
     public function mostrar()
     {
         $clientes = DB::table('personas')->where('name','=','ABOGADO')->get();
-
-        return view('administrador.abogados.listado_abogados', ['abogados' => $clientes]);
-        
+        return view('administrador.abogados.listado_abogados', ['abogados' => $clientes]);        
     }
     public function mostrar_abogado($id)
     {         

@@ -21,6 +21,7 @@ php artisan make:migration create_excepciones_table
 php artisan make:migration create_despachos_table
 php artisan make:migration create_despachos_recorridos_table
 php artisan make:migration create_despachos_casos_table
+php artisan make:migration create_categorias_table
 
 php artisan make:model Alegatos_conclusiones
 php artisan make:model Pretenciones
@@ -32,7 +33,9 @@ php artisan make:model Excepciones
 php artisan make:model Despachos
 php artisan make:model Despachos_recorridos
 php artisan make:model Casos
+php artisan make:model Categorias
 
+php artisan make:controller CategoriasController
 php artisan make:controller CasosController
 php artisan make:controller Alegatos_conclusionesController
 php artisan make:controller PretencionesController

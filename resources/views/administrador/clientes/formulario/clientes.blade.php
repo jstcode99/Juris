@@ -24,22 +24,22 @@
                         {{ Form::label('nombre', 'Razon social')}}
                         {{ Form::text('nombre', null,['class'=> 'form-control','placeholder'=> 'Razon social']) }}                
                 </div>        
-                <div class="col-md-3 mb-3"> 
+                <div class="col-md-3 mb-3 tipo"> 
                         {{ Form::label('primer_nombre', 'Primer Nombre')}}
                         {{ Form::text('primer_nombre', null,['class'=> 'form-control','placeholder'=> 'Primer Nombre']) }}                  
                 </div>
-
-                <div class="col-md-3 mb-3">                            
+ 
+                <div class="col-md-3 mb-3 tipo">                     
                      {!! Form::label('segundo_nombre','Segundo Nombre') !!}                     
                      {!! Form::text('segundo_nombre', null, ['class'=> 'form-control','placeholder'=> 'Segundo Nombre']) !!}                                          
                 </div>
 
-                <div class="col-md-3 mb-3">     
+                <div class="col-md-3 mb-3 tipo">     
                         {!! Form::label('primer_apellido','Primer Apellido') !!}                     
                         {!! Form::text('primer_apellido', null, ['class'=> 'form-control','placeholder'=> 'Primer Apellido']) !!} 
                 </div>
 
-                <div class="col-md-3 mb-3">     
+                <div class="col-md-3 mb-3 tipo">     
                         {!! Form::label('segundo_apellido','Segundo Apellido') !!}                     
                         {!! Form::text('segundo_apellido', null, ['class'=> 'form-control','placeholder'=> 'Segundo Apellido']) !!} 
                 </div>

@@ -88,10 +88,17 @@
                      Casos y Procesos   
                 </a>            
                 <ul class="list-unstyled collapse" id="collapseExample7">
+                
                     <li>
                         <a class="dropdown-item" data-feather="shopping-cart" href="{{ route('nuevo_caso')}}">
                         Nuevo caso  
                         <i class="fa fa-clipboard"></i> 
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" data-feather="shopping-cart" href="{{ route('listado_casos') }}">
+                            Listado de casos
+                            <i class="fa fa-list-ol"></i>
                         </a>
                     </li>
                     <li>
@@ -151,7 +158,14 @@
                 <a class="fa fa-gear"  data-toggle="collapse" href="#collapseExample3" role="button" aria-expanded="false" aria-controls="collapseExample">
                     Parametros
                 </a>
+                
                 <ul class="list-unstyled collapse" id="collapseExample3">
+                    <li>
+                        <a class="dropdown-item" href="{{ route('nueva_categoria') }}">
+                            Categorias                        
+                            <i class="fa fa-graduation-cap"></i>
+                        </a>                        
+                    </li>
                     <li>
                         <a class="dropdown-item" href="{{ route('nuevo_especialidad') }}">
                             Especialidades                        

@@ -72,7 +72,7 @@
                     </div> 
                     <div class="card-body"> 
                         <div class="form-row">  
-                            <div class="col-md-3 mb-3">                        
+                            <div class="col-md-6 mb-3">                        
                                     {!! Form::label('email','Correo') !!}                     
                                     {!! Form::email('email', null, ['class'=> 'form-control','placeholder'=> 'Correo']) !!}        
                             </div>
@@ -85,7 +85,7 @@
                                     {!! Form::label('password_confirmation','Confirmación Contraseña') !!}            
                                     {!! Form::password('password_confirmation', ['class'=> 'form-control','placeholder'=> 'Contraseña']) !!}        
                             </div>
-                            <div class="col-md-12 mb-3">
+                            <div class="col-md-6 mb-3">
                                 {!! Form::label('tarjeta_profesional', 'Seleccione un documento') !!}                
                                 {!! Form::file('tarjeta_profesional', ['class' => 'form-control']) !!}
                             </div>

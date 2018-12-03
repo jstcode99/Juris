@@ -47,10 +47,6 @@ class ClientesController extends Controller
     public function guardar(Request $request)
     {        
         $datos = $request->validate([
-            'primer_nombre' => 'required|string|max:100', 
-            'segundo_nombre' => 'required|string|max:100',
-            'primer_apellido' => 'required|string|max:100',
-            'segundo_apellido' => 'required|string|max:100', 
             'estrato' => 'required',
             'direccion' => 'required|string|max:100|min:10',
             'telefono' => 'required|string|min:6',
@@ -58,15 +54,39 @@ class ClientesController extends Controller
             'password' => 'min:8|required_with:password_confirmation|same:password_confirmation',
             'password_confirmation' => 'min:8'
         ]);
-
         $clientes = new Clientes;
+        if($request->TipoPersona=="Persona")
+        {
+            $datos = $request->validate([
+                'tipo_documento' => 'required',
+                'documento' => 'required|numeric',
+                'primer_nombre' => 'required|string|max:100', 
+                'segundo_nombre' => 'required|string|max:100',
+                'primer_apellido' => 'required|string|max:100',
+                'segundo_apellido' => 'required|string|max:100', 
+            ]);
+            $clientes->tipo_documento = $request->tipo_documento;
+            $clientes->documento = $request->documento;
+            $clientes->primer_nombre = strtoupper($request->primer_nombre);
+            $clientes->segundo_nombre = strtoupper($request->segundo_nombre);
+            $clientes->primer_apellido = strtoupper($request->primer_apellido);
+            $clientes->segundo_apellido = strtoupper($request->segundo_apellido);
+        }
+        if($request->TipoPersona=="Empresa")
+        {
+            $datos = $request->validate([                
+                'nit' => 'required|numeric',
+                'nombre' => 'required|string|max:100', 
+            ]);
+            $clientes->tipo_documento = 'NIT';
+            $clientes->documento = $request->nit;
+            $clientes->primer_nombre = strtoupper($request->nombre);
+        }
+        
 
-        $clientes->tipo_documento = $request->tipodocumento;
-        $clientes->documento = $request->documento;
-        $clientes->primer_nombre = strtoupper($request->primer_nombre);
-        $clientes->segundo_nombre = strtoupper($request->segundo_nombre);
-        $clientes->primer_apellido = strtoupper($request->primer_apellido);
-        $clientes->segundo_apellido = strtoupper($request->segundo_apellido);
+        
+
+        
         $clientes->estado = 'ACTIVO';
         $clientes->estrato = $request->estrato;
         $clientes->direccion = strtoupper($request->direccion);
