@@ -4,7 +4,7 @@
         <li class="breadcrumb-item"><a href="{{ route('nuevo_caso')}}">Nuevo caso</a></li>
     @endsection  
     @section('contenedor')
-    {!! Form::open(array('route' => 'guardar_caso')) !!}                               
+    {!! Form::open(array('route' => 'guardar_caso','files' => true)) !!}                               
                 @include('administrador.casos.formulario.caso')                      
     </div>
     {{ Form::close() }}       

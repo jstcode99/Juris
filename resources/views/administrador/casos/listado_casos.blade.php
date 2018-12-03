@@ -23,8 +23,8 @@
                             @foreach($casos as $caso)
                                 <tr>
                                     <td>{{ $caso->id }}</td>
-                                    <td>{{ $caso->cliente }}</td>
-                                    <td>{{ $caso->categoria}}</td>                                    
+                                    <td>{{ $caso->documento }}</td>
+                                    <td>{{ $caso->nombre}}</td>                                    
                                     <td>{{ $caso->estado }}</td>                                                            
                                     <td>
                                         <a href="{{ route('mostrar_caso', ['id' => $caso->id] ) }}" class="btn btn-default btn-xs" >

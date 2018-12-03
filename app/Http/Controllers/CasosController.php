@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use DB;
+use Storage;
 use App\Casos;
-
+use Illuminate\Support\Facades\Redirect;
 class CasosController extends Controller
 {
     
@@ -86,11 +87,13 @@ class CasosController extends Controller
                 'categoria' => 'required|numeric', 
                 'estrato' => 'required|numeric', 
                 'cuantia' => 'required|string|max:100', 
-                'audio' => 'file|min:2required|mimes:mp3',
+                'audio' => 'required',
             ]);
             $caso->etapa = 'Pre-contractual';
             $caso->estado = 'ACTIVO';
-            $caso->descripcion1 = $request->descripcion;            
+            
+            $caso->descripcion1 = $request->descripcion;         
+            $caso->estrato = $request->estrato;     
             $caso->cuantia = $request->cuantia;
             $caso->id_persona = $request->cliente;
             $caso->id_categoria = $request->categoria;
@@ -109,8 +112,12 @@ class CasosController extends Controller
 
     public function mostrar()
     {
-        $casos = DB::table('casos')->get();
+        $casos = DB::table('casos')
+        ->join('personas','casos.id_persona','=','personas.id')
+        ->join('categorias','casos.id_categoria','=','categorias.id')
+        ->select('casos.*','personas.*','categorias.*')->get();
         return view('administrador.casos.listado_casos', ['casos' => $casos]);        
+       // return $casos;
     }
 
     public function mostrar_caso($id)
