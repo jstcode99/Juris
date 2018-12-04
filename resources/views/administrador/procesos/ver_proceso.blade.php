@@ -1,6 +1,6 @@
 @extends('home')
  @section('breadcrumb-items')
-        <li class="breadcrumb-item"><a href="{{ route('home')}}">Home</a></li>
+        <li class="breadcrumb-item"><a href="{{ route('home')}}">Inicio</a></li>
         <li class="breadcrumb-item"><a href="{{ route('listado_procesos')}}">Listado de proceso</a></li>
         <li class="breadcrumb-item"><a href="{{ route('ver_proceso', ['id' => $proceso[0]->id] ) }}">Ver proceso</a></li>
     @endsection  

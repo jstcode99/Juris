@@ -1,6 +1,6 @@
 @extends('home')
 @section('breadcrumb-items')
-        <li class="breadcrumb-item"><a href="{{ route('home')}}">Home</a></li>
+        <li class="breadcrumb-item"><a href="{{ route('home')}}">Inicio</a></li>
         <li class="breadcrumb-item"><a href="{{ route('nuevo_salario')}}">Salarios</a></li>                      
         <li class="breadcrumb-item"><a href="{{ route('mostrar_salario', ['id' => $salarios->id]) }}">Actualizar salario</a></li>                      
         

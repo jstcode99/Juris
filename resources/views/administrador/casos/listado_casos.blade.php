@@ -1,7 +1,7 @@
 
 @extends('home')
  @section('breadcrumb-items')
-        <li class="breadcrumb-item"><a href="{{ route('home')}}">Home</a></li>
+        <li class="breadcrumb-item"><a href="{{ route('home')}}">Inicio</a></li>
         <li class="breadcrumb-item"><a href="{{ route('listado_casos')}}">Listado de casos</a></li>
     @endsection  
     @section('contenedor')
@@ -15,7 +15,7 @@
                         <th>Cliente</th>
                         <th>Categoria</th>
                         <th>Estado</th>
-                        <th>Editar</th>
+                        <th>Abrir</th>
                         <th>Ver</th>
                     </thead>
                     <tbody>   
@@ -28,7 +28,7 @@
                                     <td>{{ $caso->estado }}</td>                                                            
                                     <td>
                                         <a href="{{ route('mostrar_caso', ['id' => $caso->id] ) }}" class="btn btn-default btn-xs" >
-                                            <span class="fa fa-pencil"></span>                                                                                         
+                                            <span class="fa fa-folder-open-o"></span>                                                                                         
                                         </a>
                                     </td>
                                     <td>

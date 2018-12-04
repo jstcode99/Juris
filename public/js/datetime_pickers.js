@@ -108,5 +108,12 @@ $('#producto').change(function(){
           }                        
         }
     }              
-    }); 
+    });     
+});
+
+$('#audio').change(function(){
+     var number = this.size;     
+    if(number > 20012) {
+        $('#audio').val('');
+      }            
 });

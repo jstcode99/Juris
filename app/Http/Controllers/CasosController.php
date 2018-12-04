@@ -51,6 +51,7 @@ class CasosController extends Controller
 
             $this->cuantias = array(
                 "" => "Selecione una cuantia",
+                "sin cuantia" => "Sin cuantia",
                 "menor" => "Menor cuantia",
                 "mayor" => "Mayor cuantia",
             );
@@ -80,6 +81,7 @@ class CasosController extends Controller
         }
         $datos = $request->validate([
             'descripcion' => 'required|string|max:750', 
+            'audio' => 'required|max:20000',
         ]);    
         if($request->etapas=='on')
         {
@@ -87,7 +89,7 @@ class CasosController extends Controller
                 'categoria' => 'required|numeric', 
                 'estrato' => 'required|numeric', 
                 'cuantia' => 'required|string|max:100', 
-                'audio' => 'required',
+                
             ]);
             $caso->etapa = 'Pre-contractual';
             $caso->estado = 'ACTIVO';
@@ -122,14 +124,56 @@ class CasosController extends Controller
 
     public function mostrar_caso($id)
     {         
-        $caso = casos::find($id);  
+
+        $caso = DB::table('casos')
+        ->join('personas','casos.id_persona','=','personas.id')        
+        ->join('categorias','casos.id_categoria','=','categorias.id')
+        ->where('casos.id','=',$id)
+        ->select('casos.*','personas.*','categorias.*')->get();
+        $clientes = array_add($this->clientes, 0,"Selecionar una cliente");        
+        $categorias = array_add($this->categorias,0,"Selecione una categoria");
+
         if(isset($caso))
         {
-            return view('administrador.casos.mostrar_caso',['caso' => $caso]);              
+            //return $caso;
+            return view('administrador.casos.mostrar_caso',[
+                'caso' => $caso,
+                'clientes'=> $this->clientes,
+                'estrato'=> $this->estrato,
+                'cuantias' => $this->cuantias,
+                'categorias' => $this->categorias,
+                ]);              
         }else{
             return redirect('/Casos/Casos-Registrados')->with('warning', 'Debe seleccionar un caso de la lista de casos');
         }      
         
+    }
+    public function ver_caso($id){
+
+        //return $caso;
+        //return view('administrador.casos.ver_caso');
+
+        $caso = DB::table('casos')
+        ->join('personas','casos.id_persona','=','personas.id')        
+        ->join('categorias','casos.id_categoria','=','categorias.id')
+        ->where('casos.id','=',$id)
+        ->select('casos.*','personas.*','categorias.*')->get();
+        $clientes = array_add($this->clientes, 0,"Selecionar una cliente");        
+        $categorias = array_add($this->categorias,0,"Selecione una categoria");
+
+        if(isset($caso))
+        {
+            //return $caso;
+            return view('administrador.casos.ver_caso',[
+                'caso' => $caso,
+                'clientes'=> $this->clientes,
+                'estrato'=> $this->estrato,
+                'cuantias' => $this->cuantias,
+                'categorias' => $this->categorias,
+                ]);              
+        }else{
+            return redirect('/Casos/Casos-Registrados')->with('warning', 'Debe seleccionar un caso de la lista de casos');
+        }  
     }
 
     public function Proceso1($n_smlmv, $smlmv)

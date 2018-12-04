@@ -1,14 +1,72 @@
 @extends('home')
     @section('breadcrumb-items')
-        <li class="breadcrumb-item"><a href="{{ route('home')}}">Home</a></li>
-        <li class="breadcrumb-item"><a href="{{ route('nuevo_caso')}}">Nuevo caso</a></li>
+        <li class="breadcrumb-item"><a href="{{ route('home')}}">Inicio</a></li>
+        <li class="breadcrumb-item"><a href="{{ route('mostrar_caso', ['id' => $caso[0]->id] ) }}">Abrir caso</a></li>
     @endsection  
-    @section('contenedor')
-   {!! Form::model($caso, ['route' => ['actualizar_caso',$caso->id],'method' => 'put','files' => true]) !!}                              
-                @include('administrador.casos.formulario.caso')                      
+    @section('contenedor')        
+    <div class="container.fluid">
+        <div class="card">  
+            <div class="card-header">
+               <h5 class="card-title">Caso # {{$caso[0]->id}}</h5>
+            </div>
+            <div class="card-body">
+                <div class="row">                    
+                    <div class="col-sm-4">
+                        <h5 class="card-title">Cliente</h5>
+                        <hr>
+                        <p class="text-dark"><strong>Documento de identidad:</strong> {{$caso[0]->tipo_documento}} : {{$caso[0]->documento}}</p>
+                        <p class="text-dark"><strong>Nombres:</strong> {{ $caso[0]->primer_nombre }} {{ $caso[0]->segundo_nombre }}</p>
+                        <p class="text-dark"><strong>Apellidos:</strong> {{$caso[0]->primer_apellido}}</p>
+                        <p class="text-dark"><strong>Teléfono:</strong> {{$caso[0]->telefono}}</p>
+                        <p class="text-dark"><strong>Dirección:</strong> {{$caso[0]->direccion}}</p>   
+                    </div>
+                    <div class="col-sm-8">
+                        <div class="col-sm-12">
+                            <h5 class="card-title">Información del caso</h5>
+                            <hr>
+                            <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="col-md-12 mb-3">    
+                                        {!! Form::label('descripcion_a', 'Descripción tecnica') !!}                                        
+                                        {!! Form::textarea('descripcion', null, ['class' => 'form-control','rows' => '5','placeholder' => 'Descripción tecnica']) !!}                                   
+                                        <small id="passwordHelpBlock" class="form-text text-muted">
+                                        Ingrese información puntual del caso... 
+                                        </small>
+                                    </div>    
+                                    <div class="col-md-12 mb-3">
+                                        {!! Form::label('audio', 'Seleccione la grabación') !!}   
+                                        
+                                        {!! Form::file('audio_a', ['class' => 'form-control', 'id' => 'audio', 'accept'=> '.mp3']) !!}                                    
+                                        <small id="passwordHelpBlock" class="form-text text-muted">
+                                        Archivos extension .mp3, tamaño maximo 20mb
+                                        </small>
+                                    </div>    
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="col-sm-12">
+                                        <div class="col-md-12 mb-3">    
+                                        {!! Form::label('descripcion_s', 'Solución tecnica') !!}                                        
+                                        {!! Form::textarea('descripcion', null, ['class' => 'form-control','rows' => '5','placeholder' => 'Solución tecnica']) !!}                                   
+                                        <small id="passwordHelpBlock" class="form-text text-muted">
+                                        Ingrese información puntual del caso... 
+                                        </small>
+                                    </div>    
+                                    <div class="col-md-12 mb-3">
+                                        {!! Form::label('audio', 'Seleccione la grabación') !!}   
+                                        
+                                        {!! Form::file('audio_s', ['class' => 'form-control', 'id' => 'audio', 'accept'=> '.mp3']) !!}                                    
+                                        <small id="passwordHelpBlock" class="form-text text-muted">
+                                        Archivos extension .mp3, tamaño maximo 20mb
+                                        </small>
+                                    </div> 
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    {{ Form::close() }}       
-
 
      <div class="modal fade bd-example-modal-lg1" id="Cliente1" tabindex="-1" role="dialog" aria-labelledby="Cliente1" aria-hidden="true">
             <div class="modal-dialog modal-lg" role="document">

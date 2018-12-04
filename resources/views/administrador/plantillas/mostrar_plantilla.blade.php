@@ -1,6 +1,6 @@
 @extends('home')
 @section('breadcrumb-items')
-        <li class="breadcrumb-item"><a href="{{ route('home')}}">Home</a></li>
+        <li class="breadcrumb-item"><a href="{{ route('home')}}">Inicio</a></li>
         <li class="breadcrumb-item"><a href="{{ route('listado_plantillas')}}">Plantillas registradas </a></li>                              
           <li class="breadcrumb-item"><a href="{{ route('descargar_plantilla', ['documento' => $plantilla->id]) }}">Actualizar plantilla </a></li>                              
     @endsection 

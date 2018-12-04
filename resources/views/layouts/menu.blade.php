@@ -9,7 +9,7 @@
     <h4 class="navbar-brand" href="{{ route('home')}}">Juris</h4>
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
       <li class="nav-item active">
-        <a class="nav-link" href="{{ route('home')}}">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="{{ route('home')}}">Inicio<span class="sr-only">(current)</span></a>
       </li>
 
         <li class="nav-item dropdown">         
@@ -79,7 +79,7 @@
             <li>
                 <a href="{{ route('home')}}">
                 <i class="fa fa-dashboard">
-                </i> Inicio</a>
+                </i>Inicio</a>
                 <hr class="bg-light">
             </li>
 
