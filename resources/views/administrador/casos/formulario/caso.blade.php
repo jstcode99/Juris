@@ -12,7 +12,7 @@
                             Seleccione la etapa en la cual esta el caso. 
                         </small>
                     </div>    
-                    <div class="col-sm-6 estapa">                         
+                    <div class="col-sm-5 estapa">                         
                         <div class="form-row">
                             <div class="col-md-12 mb-3">                                
                                 <h5 class="text-info">Pre-contractual</h5> 
@@ -47,7 +47,7 @@
                             </div>                       
                         </div>
                     </div>
-                    <div class="col-sm-6 estapa" style="display:none"> 
+                    <div class="col-sm-5 estapa" style="display:none"> 
                         <div class="form-row">
                             <div class="col-md-12 mb-3">
                                 <h5 class="text-info">Contractual</h5> 
@@ -55,7 +55,7 @@
                             </div>                                                                      
                         </div>
                     </div>  
-                    <div class="col-sm-6"> 
+                    <div class="col-sm-7"> 
                         <div class="form-row">
                             <div class="col-md-12 mb-3">   
                                 <h5>Datos del caso</h5>
@@ -70,13 +70,17 @@
                                     {!! Form::select('cliente', $clientes, null, ['class' => 'form-control']) !!} 
                                 </div>                                                 
                             </div>            
+                            
                             <div class="col-md-12 mb-3">    
-                                {!! Form::label('descripcion', 'Descripción del caso') !!}                                        
-                                {!! Form::textarea('descripcion', null, ['class' => 'form-control','rows' => '5']) !!}                                   
+                                {!! Form::label('descripcion', 'Descripción del caso') !!}        
+                            <div class="col-md-12 mb-3">                             
+                            @include('layouts.word')                            
+                            </div>                                 
+                                {!! Form::textarea('descripcion', null, ['class' => 'form-control word','rows' => '8']) !!}                                   
                                 <small id="passwordHelpBlock" class="form-text text-muted">
                                 Ingrese información puntual del caso... 
                                 </small>
-                            </div>    
+                            </div>                            
                             <div class="col-md-12 mb-3">
                                 {!! Form::label('audio', 'Seleccione la grabación') !!}   
                                 

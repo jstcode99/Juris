@@ -39,8 +39,34 @@
                                 </div>                                                                                          
                             </div>
                             <div class="col-md-12">
-                                <h5 class="text-info">Descripción del caso</h5> 
-                                 <textarea class="form-control rounded"  rows="10">{{$caso[0]->descripcion1}}{{$caso[0]->descripcion2}}{{$caso[0]->descripcion3}}</textarea>
+                            
+                                <h5 class="text-dark">Descripción del caso</h5> 
+                                <hr>
+                                <div class="col-md-12 mb-3">                             
+                                    @include('layouts.word')  
+                                    <button type="button" onclick="text_print('descripcion');" class="btn btn-secondary"> <i class="fa fa-print"></i></button>                          
+                                </div>   
+                                 <textarea class="form-control rounded" id="descripcion"  rows="10">{{$caso[0]->descripcion1}}{{$caso[0]->descripcion2}}{{$caso[0]->descripcion3}}</textarea>
+                            </div>
+                            <div class="col-md-12">
+                            
+                                <h5 class="text-dark">Descripción del juridica</h5> 
+                                <hr>
+                                <div class="col-md-12 mb-3">                             
+                                    @include('layouts.word')  
+                                    <button type="button" onclick="text_print('descripcion');" class="btn btn-secondary"> <i class="fa fa-print"></i></button>                          
+                                </div>   
+                                 <textarea class="form-control rounded" id="descripcion_a"  rows="10">{{$caso[0]->descripcion1_a}}{{$caso[0]->descripcion2_a}}{{$caso[0]->descripcion3_a}}</textarea>
+                            </div>
+                             <div class="col-md-12">
+                            
+                                <h5 class="text-dark">Solución del juridica</h5> 
+                                <hr>
+                                <div class="col-md-12 mb-3">                             
+                                    @include('layouts.word')  
+                                    <button type="button" onclick="text_print('descripcion');" class="btn btn-secondary"> <i class="fa fa-print"></i></button>                          
+                                </div>   
+                                 <textarea class="form-control rounded" id="descripcion_a"  rows="10">{{$caso[0]->descripcion1_s}}{{$caso[0]->descripcion2_s}}{{$caso[0]->descripcion3_s}}</textarea>
                             </div>
                         </div>
                     </div>

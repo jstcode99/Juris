@@ -10,6 +10,7 @@
                <h5 class="card-title">Caso # {{$caso[0]->id}}</h5>
             </div>
             <div class="card-body">
+            {!! Form::model($caso, ['route' => ['abrir_caso',$caso[0]->id],'method' => 'put','files' => true]) !!}             
                 <div class="row">                    
                     <div class="col-sm-4">
                         <h5 class="card-title">Cliente</h5>
@@ -27,14 +28,17 @@
                             <div class="row">
                                     <div class="col-sm-6">
                                         <div class="col-md-12 mb-3">    
-                                        {!! Form::label('descripcion_a', 'Descripción tecnica') !!}                                        
-                                        {!! Form::textarea('descripcion', null, ['class' => 'form-control','rows' => '5','placeholder' => 'Descripción tecnica']) !!}                                   
+                                        {!! Form::label('descripcion_a', 'Descripción juridica') !!}   
+                                         <div class="col-md-12 mb-3">                             
+                                @include('layouts.word')                            
+                                </div>                                            
+                                        {!! Form::textarea('descripcion', null, ['class' => 'form-control','rows' => '5','placeholder' => 'Descripción juridica']) !!}                                   
                                         <small id="passwordHelpBlock" class="form-text text-muted">
                                         Ingrese información puntual del caso... 
                                         </small>
                                     </div>    
                                     <div class="col-md-12 mb-3">
-                                        {!! Form::label('audio', 'Seleccione la grabación') !!}   
+                                        {!! Form::label('audio_a', 'Seleccione la grabación') !!}   
                                         
                                         {!! Form::file('audio_a', ['class' => 'form-control', 'id' => 'audio', 'accept'=> '.mp3']) !!}                                    
                                         <small id="passwordHelpBlock" class="form-text text-muted">
@@ -45,14 +49,17 @@
                                 <div class="col-sm-6">
                                     <div class="col-sm-12">
                                         <div class="col-md-12 mb-3">    
-                                        {!! Form::label('descripcion_s', 'Solución tecnica') !!}                                        
-                                        {!! Form::textarea('descripcion', null, ['class' => 'form-control','rows' => '5','placeholder' => 'Solución tecnica']) !!}                                   
+                                        {!! Form::label('descripcion_s', 'Solución juridica') !!}  
+                                         <div class="col-md-12 mb-3">                             
+                                        @include('layouts.word')                            
+                                        </div>                                             
+                                        {!! Form::textarea('descripcion_s', null, ['class' => 'form-control word','rows' => '5','placeholder' => 'Solución juridica']) !!}                                   
                                         <small id="passwordHelpBlock" class="form-text text-muted">
                                         Ingrese información puntual del caso... 
                                         </small>
                                     </div>    
                                     <div class="col-md-12 mb-3">
-                                        {!! Form::label('audio', 'Seleccione la grabación') !!}   
+                                        {!! Form::label('audio_s', 'Seleccione la grabación') !!}   
                                         
                                         {!! Form::file('audio_s', ['class' => 'form-control', 'id' => 'audio', 'accept'=> '.mp3']) !!}                                    
                                         <small id="passwordHelpBlock" class="form-text text-muted">
@@ -60,10 +67,14 @@
                                         </small>
                                     </div> 
                                 </div>
+                                <div class="col-sm-12">                                    
+                                    {!! Form::submit('Guardar', ['class'=>'btn btn-primary pull-right']) !!}                                    
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
+            {{ Form::close() }}
             </div>
         </div>
     </div>

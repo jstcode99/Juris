@@ -79,7 +79,7 @@
             <li>
                 <a href="{{ route('home')}}">
                 <i class="fa fa-dashboard">
-                </i>Inicio</a>
+                </i> Inicio</a>
                 <hr class="bg-light">
             </li>
 

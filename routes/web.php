@@ -93,7 +93,7 @@ Route::group( ['prefix' => 'Administrador', 'middleware' => 'auth'], function ()
         Route::post('Casos/Guardar-Caso','CasosController@guardar')->name('guardar_caso');
         Route::get('/Casos/Casos-Registrados','CasosController@mostrar')->name('listado_casos');  
         Route::get('/Casos/Mostrar-Caso/{id}','CasosController@mostrar_caso')->name('mostrar_caso');
-        Route::put('/Casos/Actualizar-caso/{id}','CasosController@actualizar_caso')->name('actualizar_caso');    
+        Route::put('/Casos/Abrir-caso/{id}','CasosController@abrir_caso')->name('abrir_caso');    
         Route::get('/Casos/Ver-caso/{id}','CasosController@ver_caso')->name('ver_caso');
 
 

@@ -117,3 +117,27 @@ $('#audio').change(function(){
         $('#audio').val('');
       }            
 });
+
+
+function text_center()
+{
+    $('.word').css("text-align", "center"); 
+}
+function text_justify()
+{
+    $('.word').css("text-align", "justify"); 
+}
+function text_left()
+{
+    $('.word').css("text-align", "left"); 
+}
+function text_right()
+{
+    $('.word').css("text-align", "right"); 
+}
+function text_eraser()
+{
+    $('.word').val('');
+}
+
+

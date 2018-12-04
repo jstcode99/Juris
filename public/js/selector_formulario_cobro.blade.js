@@ -243,3 +243,13 @@ function agregar_cobro(){
             }
         });  
     }    
+
+function text_print(input)
+{
+    var descripción = $('#'+input).val();
+    var hoja = '<!DOCTYPE html><html><head><meta charset="UTF-8"><title>Juris</title></head><body><h2>Descripcion del caso</h2><div style="padding: 10px;"><p style="text-align: justify;">'+descripción+'</p></div></body></html>';
+    newWin= window.open("");
+    newWin.document.write(hoja);
+    newWin.print();
+    newWin.close();
+}
