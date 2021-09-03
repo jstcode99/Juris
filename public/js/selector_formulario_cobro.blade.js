@@ -253,3 +253,66 @@ function text_print(input)
     newWin.print();
     newWin.close();
 }
+$( document ).ready(function() {
+    if ($("#rama").length){
+        if($('#rama').val() != ''){            
+            $('#categoria').html('<option value="">Seleccione un categoria</option>');
+            rama = $('#rama').val();
+                    _token = $("input[name='_token']").val();
+                    var parametros = {
+                        "rama":rama,
+                        "_token" : _token
+                        };
+            $.ajax({
+                data:  parametros,
+                url:   'http://localhost:8000/Administrador/Categorias/Mostrar-Categoria/Rama',
+                type:  'post',
+                beforeSend: function () {                
+                },
+                success:  function (response) {     
+                    if(response==null || response=='null')
+                    {
+
+                    }else{                
+                        for(i=0; i < response.length; i++)
+                            {                        
+                                $('#categoria').append('<option value="'+response[i].id+'">'+response[i].nombre+'</option>');
+                            }
+                    }  
+                    
+                }
+            });
+        }
+      }
+     
+});
+
+$('#rama').change(function(event)
+{    
+    $('#categoria').html('<option value="">Seleccione un categoria</option>');
+    rama = $('#rama').val();
+            _token = $("input[name='_token']").val();
+            var parametros = {
+                "rama":rama,
+                "_token" : _token
+                };
+    $.ajax({
+        data:  parametros,
+        url:   'http://localhost:8000/Administrador/Categorias/Mostrar-Categoria/Rama',
+        type:  'post',
+        beforeSend: function () {                
+        },
+        success:  function (response) {     
+            if(response==null || response=='null')
+            {
+
+            }else{                
+                for(i=0; i < response.length; i++)
+                    {                        
+                        $('#categoria').append('<option value="'+response[i].id+'">'+response[i].nombre+'</option>');
+                    }
+            }  
+            
+        }
+    });  
+});

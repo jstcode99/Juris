@@ -17,7 +17,7 @@
                         <hr>
                         <p class="text-dark"><strong>Documento de identidad:</strong> {{$caso[0]->tipo_documento}} : {{$caso[0]->documento}}</p>
                         <p class="text-dark"><strong>Nombres:</strong> {{ $caso[0]->primer_nombre }} {{ $caso[0]->segundo_nombre }}</p>
-                        <p class="text-dark"><strong>Apellidos:</strong> {{$caso[0]->primer_apellido}}</p>
+                        <p class="text-dark"><strong>Apellidos:</strong> {{$caso[0]->primer_apellido}}{{$caso[0]->segundo_apellido}}</p>
                         <p class="text-dark"><strong>Teléfono:</strong> {{$caso[0]->telefono}}</p>
                         <p class="text-dark"><strong>Dirección:</strong> {{$caso[0]->direccion}}</p>   
                     </div>
@@ -26,13 +26,25 @@
                             <h5 class="card-title">Información del caso</h5>
                             <hr>
                             <div class="row">
+                                    <div class="col-md-6 mb-3">    
+                                        <div class="col-md-12 mb-3">    
+                                        {!! Form::label('ramas', 'Ramas') !!}            
+                                        {!! Form::select('ramas', $ramas, "0", ['class' => 'form-control', 'id' => 'rama']) !!}         
+                                        </div>
+                                    </div> 
+                                    <div class="col-md-6 mb-3">    
+                                        <div class="col-md-12 mb-3">    
+                                        {!! Form::label('categoria', 'Categorias') !!}            
+                                        {!! Form::select('categoria', $categorias, "0", ['class' => 'form-control', 'id' => 'categoria']) !!}         
+                                        </div>
+                                    </div>
                                     <div class="col-sm-6">
                                         <div class="col-md-12 mb-3">    
-                                        {!! Form::label('descripcion_a', 'Descripción juridica') !!}   
+                                        {!! Form::label('descripcion_a', 'Problema juridico') !!}   
                                          <div class="col-md-12 mb-3">                             
                                 @include('layouts.word')                            
                                 </div>                                            
-                                        {!! Form::textarea('descripcion', null, ['class' => 'form-control','rows' => '5','placeholder' => 'Descripción juridica']) !!}                                   
+                                        {!! Form::textarea('descripcion_a', null, ['class' => 'form-control','rows' => '5','placeholder' => 'Descripción juridica']) !!}                                   
                                         <small id="passwordHelpBlock" class="form-text text-muted">
                                         Ingrese información puntual del caso... 
                                         </small>
@@ -49,7 +61,7 @@
                                 <div class="col-sm-6">
                                     <div class="col-sm-12">
                                         <div class="col-md-12 mb-3">    
-                                        {!! Form::label('descripcion_s', 'Solución juridica') !!}  
+                                        {!! Form::label('descripcion_s', 'Solución juridica proyectada') !!}  
                                          <div class="col-md-12 mb-3">                             
                                         @include('layouts.word')                            
                                         </div>                                             

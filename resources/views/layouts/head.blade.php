@@ -8,6 +8,7 @@
   <link type="text/css" href="{{asset('css/bootadmin.min.css')}}?v=1.0.0" rel="stylesheet">  
   <link type="text/css" href="{{asset('css/jquery-ui.css')}}" rel="stylesheet">  
   <link type="text/css" href="{{asset('css/jquery.dataTables.min.css')}}?v=1.0.0" rel="stylesheet">
+  <link type="text/css" href="{{asset('css/combobox.css')}}?v=1.0.0" rel="stylesheet">
   <link type="text/css" href="{{asset('css/buttons.dataTables.min.css')}}" rel="stylesheet">
   <link type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">  
   <link type="text/css" href="{{asset('css/bootstrap-toggle.min.css')}}" rel="stylesheet">

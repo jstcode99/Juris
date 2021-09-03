@@ -178,5 +178,10 @@ class ClientesController extends Controller
             return back()->with('success', 'El cliente ha sido suspendido con exito!');
         }        
     }
+    public function select_de_clientes()
+    {
+        $clientes = DB::table('personas')->where('name','=','CLIENTE')->select(DB::raw("id,CONCAT(tipo_documento,': ',documento, ' - ', primer_nombre) as identidad"))->get()->pluck('identidad','id');
+        return $clientes;
+    }
 
 }

@@ -24,7 +24,13 @@
                                 <tr>
                                     <td>{{ $caso->id }}</td>
                                     <td>{{ $caso->documento }}</td>
-                                    <td>{{ $caso->categoria}}</td>                                    
+                                    <td>
+                                    @if(empty($caso->categoria))
+                                        SIN CATEGORIA
+                                    @endif
+                                    @if(isset($caso->categoria))
+                                        {{ $caso->categoria}}</td>  
+                                    @endif                                                                      
                                     <td>{{ $caso->estado }}</td>                                                            
                                     <td>
                                         <a href="{{ route('mostrar_caso', ['id' => $caso->id] ) }}" class="btn btn-default btn-xs" >

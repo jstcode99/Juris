@@ -55,4 +55,9 @@ class CategoriasController extends Controller
             return redirect('Administrador/categorias/Nueva-Categoria')->with('success', 'La categoria ha sido actualizada con exito!');
         }      
     }
+    public function select_de_cateregorias_rama(Request $request)
+    {
+        $categorias = DB::table('categorias')->where('rama','=',$request->rama)->get();
+        return $categorias;
+    }
 }

@@ -118,6 +118,7 @@ Route::group( ['prefix' => 'Administrador', 'middleware' => 'auth'], function ()
         Route::post('Categorias/Guardar-Categoria', 'CategoriasController@guardar')->name('guardar_categoria');        
         Route::put('Categorias/Actualizar-Categoria/{id}','CategoriasController@actualizar_categoria')->name('actualizar_categoria');
         Route::get('Categorias/Mostrar-Categoria/{id}', 'CategoriasController@mostrar_categoria')->name('mostrar_categoria');
+        Route::post('Categorias/Mostrar-Categoria/Rama','CategoriasController@select_de_cateregorias_rama')->name('select_de_cateregorias_rama');
     }); 
 
 
